@@ -1,4 +1,79 @@
-html, body{
-  margin: 0px;
-  height: 100%;
+/*Importo i font*/
+@import url('https://fonts.cdnfonts.com/css/futura-std-4');
+
+/* Reset di base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #24273a;
 }
+
+header{
+  display: flex;
+  justify-content: center;
+  background-color: #24273a;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+}
+
+.titolo{
+  font-size: 6vw;
+  font-family: 'Futura Std';
+  color:#a6da95;
+}
+
+
+/* Marquee */
+.marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 1rem 0;
+}
+
+.marquee {
+  display: flex;
+  width: fit-content;
+  animation: scroll 30s linear infinite;
+  gap: 2rem;
+}
+
+.marquee img {
+  height: 80px;
+  flex-shrink: 0;
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.1));
+  transition: transform 0.3s;
+}
+
+.marquee img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+✅ Dove mettere le immagini?
+
+Metti i tuoi SVG in:
+
+/contenuti/logo/
+
+All’interno della cartella public se stai usando un server locale tipo Vite, oppure accanto all’HTML se è un sito statico.
+🔚 Risultato
+
+    ✅ Tutto in HTML/CSS puro
+
+    ✅ Nessun React, Node, build, configurazione
+
+    ✅ Marquee fluido, loop infinito, compatibile con tutti i browser moderni
+
+Se vuoi aggiungere altri effetti, sezioni o miglioramenti estetici, fammelo sapere!
