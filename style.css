@@ -1,11 +1,19 @@
 /*Importo i font*/
+@import "https://www.nerdfonts.com/assets/css/webfont.css";
 @import url('https://fonts.cdnfonts.com/css/futura-std-4');
 
-/* Reset di base */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+}
+
+html{
+  padding: 0px;
+  margin: 0px;
+}
+
+body{
+  padding: 0px;
+  margin: 0px;
   background-color: #24273a;
 }
 
@@ -13,14 +21,83 @@ header{
   display: flex;
   justify-content: center;
   background-color: #24273a;
-  padding-top: 2vw;
-  padding-bottom: 2vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+}
+
+ul {
+
+    list-style-type: none;
+}
+
+li{
+  display: flex;
+  justify-content: center;
+  border: 0px;
+  padding: 0px;
+  width: 100vw;
+  height: inherit;
+  text-decoration: none;
 }
 
 .titolo{
-  font-size: 6vw;
+  font-size: calc(2vw + 2rem);
   font-family: 'Futura Std';
   color:#a6da95;
+}
+
+.menu{
+  display: flex;
+  background-color: #24273a;
+  justify-content: center;
+}
+
+.menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.bottone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40vw;
+  padding: 0;
+  border: 0;
+  font-family: 'Times New Roman', Times, serif;
+  padding-right: 5vw;
+  padding-left: 5vw;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+
+  max-height: 30vh;
+
+  border-radius: 1rem;
+  transition: ease-in-out;
+  transition-duration: 100ms;
+}
+
+.bottone:hover{
+  width: 100px;
+}
+
+.a {background-color: #8aadf4;}
+.b {background-color: #c6a0f6;}
+.c {background-color: #ed8796;}
+.d {background-color: #eed49f;}
+
+.i {color:#24273a;
+    font-size: 5rem;
 }
 
 
@@ -60,20 +137,3 @@ header{
     transform: translateX(-50%);
   }
 }
-
-✅ Dove mettere le immagini?
-
-Metti i tuoi SVG in:
-
-/contenuti/logo/
-
-All’interno della cartella public se stai usando un server locale tipo Vite, oppure accanto all’HTML se è un sito statico.
-🔚 Risultato
-
-    ✅ Tutto in HTML/CSS puro
-
-    ✅ Nessun React, Node, build, configurazione
-
-    ✅ Marquee fluido, loop infinito, compatibile con tutti i browser moderni
-
-Se vuoi aggiungere altri effetti, sezioni o miglioramenti estetici, fammelo sapere!
