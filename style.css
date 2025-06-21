@@ -11,8 +11,14 @@ html{
   margin: 0px;
 }
 
-body, .strato{
-  min-height: 100vh;
+.contenitore{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+body, .contenitore, .strato{
+  height: 100vh;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100% 100%; 
@@ -24,8 +30,7 @@ body{
   background-color: #24273a;
 }
 .strato{
-  z-index: 10;
-  transition: background-size 200ms linear;
+  transition: background-size 400ms ease-out;
 }
 
 header{
@@ -56,15 +61,17 @@ li{
   font-size: calc(2vw + 2rem);
   font-family: 'Futura Std';
   color:#a6da95;
+  text-align: center;
 }
 
 .menu{
-  z-index: -1;
   background-color: rgba(0,0,0,0);
   justify-content: center;
 }
 
-.menu ul {
+.menu, ul {  
+  position: relative;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -73,12 +80,14 @@ li{
 }
 
 li {
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   gap: 1rem;
 }
 
 .bottone {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
