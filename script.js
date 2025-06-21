@@ -1,43 +1,65 @@
-// import { Marquee } from "@/components/magicui/marquee";
+// import { Marquee } from "@/components/magicui/marquee"nome;
 
-document.querySelector(".a").addEventListener("click", () => bottonePremuto("a"))
-document.querySelector(".b").addEventListener("click", () => bottonePremuto("b"))
-document.querySelector(".c").addEventListener("click", () => bottonePremuto("c"))
-document.querySelector(".d").addEventListener("click", () => bottonePremuto("d"))
+let bottoni = document.querySelectorAll(".bottone") 
+bottoni.forEach(bottoneSingolo => {
+  let nomeBottone = bottoneSingolo.classList.value
+  nomeBottone = nomeBottone.replace("bottone ", "")
+
+  bottoneSingolo.addEventListener("click", () => apriMenu(nomeBottone), {once: true})
+});
 
 let coloreSfondo = "#24273a" 
 
-function bottonePremuto(nome) {
+function apriMenu(nome) {
+
+  let bottonePremuto = document.querySelector(`.${nome}`) 
+
+  let divGradiente = document.querySelector(`.strato`) 
 
   document.querySelector("body").style.setProperty("background-size","100% 100%");
 
   let coloreBottone;
   let gradiente;
-  let posizioneBottone= "29.25% 42.75%";
 
-  if(nome=="a"){
-    coloreBottone = "#8aadf4"
-    posizioneBottone= "29.25% 42.75%";
-  }else if(nome=="b"){
-    coloreBottone = "#c6a0f6"
-    posizioneBottone= "70.75% 42.75%";
-  }else if(nome=="c"){
-    coloreBottone = "#ed8796"
-    posizioneBottone= "29.25% 75.75%";
-  }else if(nome=="d"){
-    coloreBottone = "#eed49f"
-    posizioneBottone= "70.75% 75.75%";
-  }
+  coloreBottone = getComputedStyle(bottonePremuto).getPropertyValue( "background-color" );
 
-  gradiente = `radial-gradient(circle at ${posizioneBottone}, ${coloreBottone} 5%, rgba(0,0,0,0) 6%)`  
+  var rect = bottonePremuto.getBoundingClientRect();
+  let lunghezzaBottone = rect.right - rect.left
+  let altezzaBottone = rect.bottom - rect.top
+
+
+  posizioneBottone = `${(lunghezzaBottone)/2 + rect.left}px ${(altezzaBottone)/2 + rect.top}px`
+  gradiente = `radial-gradient(circle at ${posizioneBottone}, ${coloreBottone} 5%, rgba(0,0,0,0) 5%)`  
   
-  document.querySelectorAll(".bottone").forEach(bottone => {
-    bottone.style.setProperty("z-index","-1")
+  bottoni.forEach(bottoneSingolo => {
+    bottoneSingolo.style.setProperty("z-index","-1")
   });
 
-  document.querySelector(".strato").style.setProperty("background-image",`${gradiente}`)
+  bottonePremuto.style.setProperty("z-index","1")
 
-  document.querySelector(".strato").style.setProperty("background-position",`${posizioneBottone}`)
+  divGradiente.style.setProperty("background-image",`${gradiente}`)
 
-  document.querySelector(".strato").style.setProperty("background-size","2000% 2000%")
+  divGradiente.style.setProperty("background-position",`0% 0%`)
+
+  divGradiente.style.setProperty("background-size","2000% 2000%")
+
+
+  bottonePremuto.addEventListener("click", () => chiudiMenu(nome), {once: true})
+}
+
+function chiudiMenu(nome){
+  let bottonePremuto = document.querySelector(`.${nome}`) 
+
+
+  let divGradiente = document.querySelector(`.strato`) 
+  divGradiente.style.setProperty("background-size","0% 0%")
+
+
+  setTimeout(()=>{
+    bottoni.forEach(bottoneSingolo => {
+      bottoneSingolo.style.setProperty("z-index","1")
+      })
+    
+    bottonePremuto.addEventListener("click", () => apriMenu(nome), {once: true})
+    },200)
 }
