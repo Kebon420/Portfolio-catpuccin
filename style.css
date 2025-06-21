@@ -11,18 +11,29 @@ html{
   margin: 0px;
 }
 
-body{
+body, .strato{
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%; 
   padding: 0px;
   margin: 0px;
+}
+
+body{
   background-color: #24273a;
+}
+.strato{
+  z-index: 10;
+  transition: background-size 500ms ease-out;
 }
 
 header{
   display: flex;
   justify-content: center;
-  background-color: #24273a;
   padding-top: 0.5vw;
   padding-bottom: 0.5vw;
+  background-color: rgba(0,0,0,0);
 }
 
 ul {
@@ -41,14 +52,15 @@ li{
 }
 
 .titolo{
+  z-index: -1;
   font-size: calc(2vw + 2rem);
   font-family: 'Futura Std';
   color:#a6da95;
 }
 
 .menu{
-  display: flex;
-  background-color: #24273a;
+  z-index: -1;
+  background-color: rgba(0,0,0,0);
   justify-content: center;
 }
 
@@ -88,8 +100,10 @@ li{
 }
 
 .bottone:hover{
-  width: 100px;
+  border-radius: 3rem;
+  cursor: pointer;
 }
+
 
 .a {background-color: #8aadf4;}
 .b {background-color: #c6a0f6;}
