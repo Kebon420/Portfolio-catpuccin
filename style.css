@@ -9,6 +9,7 @@
 html{
   padding: 0px;
   margin: 0px;
+  overflow: hidden;
 }
 
 .contenitore{
@@ -31,6 +32,26 @@ body{
 }
 .strato{
   transition: background-size 400ms ease-out;
+}
+
+.nascosto{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  background-color: rgba(0,0,0,0);
+  color:#24273a;
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 0;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 header{
@@ -100,12 +121,16 @@ li {
   padding-left: 5vw;
   padding-top: 2vw;
   padding-bottom: 2vw;
+  
 
   max-height: 30vh;
 
   border-radius: 1rem;
-  transition: ease-in-out;
-  transition-duration: 100ms;
+
+  transform: translate(0px,0px);
+  transition: 
+    transform 300ms ease-in-out, 
+    border-radius 200ms ease-in-out;
 }
 
 .bottone:hover{
