@@ -54,6 +54,22 @@ body{
   user-select: none; /* Standard syntax */
 }
 
+#cerchio{
+  position: fixed;
+  width: 40vw;
+  z-index: 25;
+  pointer-events:none;
+}
+
+.cerchino{
+  stroke: #00000000;
+}
+
+@keyframes rotazione{
+  50% {transform: rotate(180deg);}
+  100% {transform: rotate(360deg);}
+}
+
 header{
   display: flex;
   justify-content: center;

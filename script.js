@@ -10,6 +10,12 @@ bottoni.forEach(bottoneSingolo => {
   bottoneSingolo.addEventListener("click", () => apriMenu(nomeBottone), {once: true})
 });
 
+cerchio = document.querySelector("#cerchio")
+
+var cerc = cerchio.getBoundingClientRect();
+let lunghezzaCerchio = cerc.right - cerc.left
+let altezzaCerchio = cerc.bottom - cerc.top
+
 function apriMenu(nome) {
 
   let bottonePremuto = document.querySelector(`.${nome}`) 
@@ -22,6 +28,7 @@ function apriMenu(nome) {
   let gradiente;
 
   coloreBottone = getComputedStyle(bottonePremuto).getPropertyValue( "background-color" );
+  coloreCerchio = ottieniColoreCerchio(nome)
   // coloreBottone = "#000000"
 
   var rect = bottonePremuto.getBoundingClientRect();
@@ -42,6 +49,11 @@ function apriMenu(nome) {
 
 
 //bottonePremuto.style.setProperty("position","fixed")
+  //
+  document.querySelectorAll(".cerchino").forEach(frammentoCerchio => {
+    frammentoCerchio.style.setProperty("stroke",coloreCerchio)
+  });
+
 
   if(nome == "a"|| nome == "b"){
     posY = -rect.top
@@ -65,9 +77,13 @@ function apriMenu(nome) {
     }
   }
 
-  console.log(rect.top, altezzaBottone)
+  cerchio.style.setProperty("left",`${(lunghezzaBottone/2 + rect.left)-(lunghezzaCerchio/2) + posX}px`)
+  cerchio.style.setProperty("top",`${(altezzaBottone/2 + rect.top)-(altezzaCerchio/2) + posY}px`)
+
   bottonePremuto.style.setProperty("transform", `translate(${posX}px, ${posY}px)`)
 
+  
+  cerchio.style.setProperty("animation", "rotazione 5s infinite linear")
 
   bottonePremuto.addEventListener("click", () => chiudiMenu(nome), {once: true})
 }
@@ -81,6 +97,15 @@ function chiudiMenu(nome){
   let divGradiente = document.querySelector(`.strato`) 
   divGradiente.style.setProperty("background-size","0% 0%")
 
+  document.querySelectorAll(".cerchino").forEach(frammentoCerchio => {
+    frammentoCerchio.style.setProperty("stroke","#00000000")
+  });
+  
+  var rect = bottonePremuto.getBoundingClientRect();
+  let lunghezzaBottone = rect.right - rect.left
+  let altezzaBottone = rect.bottom - rect.top
+
+  posizioneBottone = `${(lunghezzaBottone)/2 + rect.left}px ${(altezzaBottone)/2 + rect.top}px`
 
   setTimeout(()=>{
     bottoni.forEach(bottoneSingolo => {
@@ -89,7 +114,19 @@ function chiudiMenu(nome){
     
     bottonePremuto.addEventListener("click", () => apriMenu(nome), {once: true})
     },200)
-
-
-
 }
+
+
+
+function ottieniColoreCerchio(nome){
+  if(nome=="a"){
+    return "#91d7e3"
+  }else if(nome=="b"){
+    return "#f5bde6" 
+  }else if(nome=="c"){
+    return "#ee99a0" 
+  }else if(nome=="d"){
+    return "#f5a97f"
+  }
+}
+
