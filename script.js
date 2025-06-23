@@ -50,9 +50,19 @@ function apriMenu(nome) {
   }
   
   if(nome == "a"|| nome == "c"){
-    posX = -lunghezzaBottone/2
+    
+    if(window.innerWidth > 500){
+      posX = -lunghezzaBottone/2
+    }else{
+      posX = -rect.left
+    }
+
   }else{
-    posX = lunghezzaBottone/2
+    if(window.innerWidth > 500){
+      posX = lunghezzaBottone/2
+    }else{
+      posX = window.innerWidth - rect.right
+    }
   }
 
   console.log(rect.top, altezzaBottone)
