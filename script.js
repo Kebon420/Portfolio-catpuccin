@@ -12,6 +12,10 @@ bottoni.forEach(bottoneSingolo => {
 
 cerchio = document.querySelector("#cerchio")
 
+if(window.innerWidth < 700){
+  cerchio.style.width = "40vw"
+}
+
 var cerc = cerchio.getBoundingClientRect();
 let lunghezzaCerchio = cerc.right - cerc.left
 let altezzaCerchio = cerc.bottom - cerc.top
