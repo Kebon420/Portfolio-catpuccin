@@ -74,7 +74,7 @@ function apriMenu(nome) {
 
 
 
-  //cerchio.style.setProperty("animation", "rotazione 5s infinite linear")
+  cerchio.style.setProperty("animation", "rotazione 5s infinite linear")
 
 
   bottonePremuto.addEventListener("click", () => chiudiMenu(nome), {once: true})
@@ -83,6 +83,7 @@ function apriMenu(nome) {
 
 function chiudiMenu(nome){
   bottonePremuto = document.querySelector(`.${nome}`) 
+
 
 
   bottonePremuto.style.setProperty("left",`${0}px`)
@@ -136,6 +137,7 @@ function sistemaPosizioni(nome){
     return
   }
 
+  cerchio.style.setProperty("animation", "none")
 
   cerc = cerchio.getBoundingClientRect();
   lunghezzaCerchio = cerc.right - cerc.left
@@ -178,6 +180,7 @@ function sistemaPosizioni(nome){
     
   bottonePremuto.style.setProperty("left",`${posX}px`)
   bottonePremuto.style.setProperty("top",`${posY}px`)
+  cerchio.style.setProperty("animation", "rotazione 5s infinite linear")
 }
 
 function sistemaStrato(){
