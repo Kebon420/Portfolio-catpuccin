@@ -69,7 +69,7 @@ function apriMenu(nome) {
   bottoni.forEach(bottoneSingolo => {
     bottoneSingolo.style.setProperty("z-index","-1")
   });
-  bottonePremuto.style.setProperty("z-index","1")
+  bottonePremuto.style.setProperty("z-index","100")
 
   //
   document.querySelectorAll(".cerchino").forEach(frammentoCerchio => {
@@ -82,13 +82,20 @@ function apriMenu(nome) {
 
   divTesto = document.querySelector(`.div-${nome}`)
   divTesto.style.setProperty("color","#24273aFF")
+  divTesto.style.setProperty("pointer-events","auto")
+  divTesto.style.setProperty("z-index","9999")
 
-  bottonePremuto.addEventListener("click", () => chiudiMenu(nome), {once: true})
-
+  setTimeout(()=>{
+    bottonePremuto.style.setProperty("background-color","#00000000")
+    divTesto.style.setProperty("z-index","30")
+    bottonePremuto.addEventListener("click", () => chiudiMenu(nome), {once: true})
+  },200)
 }
 
 function chiudiMenu(nome){
 
+  divTesto.style.setProperty("z-index","9999")
+  bottonePremuto.style.setProperty("background-color",`${coloreBottone}`)
   divTesto.style.setProperty("color","rgba(0,0,0,0)")
   bottonePremuto = document.querySelector(`.${nome}`) 
   cerchio.style.setProperty("opacity","0")
@@ -112,6 +119,7 @@ function chiudiMenu(nome){
       bottoneSingolo.style.setProperty("z-index","1")
       })
 
+    divTesto.style.setProperty("z-index","-1")
     bottonePremuto.addEventListener("click", () => apriMenu(nome), {once: true})
     bottonePremuto = NaN
     },200)

@@ -12,6 +12,24 @@ html{
   overflow: hidden;
 }
 
+p{
+  text-align:center;
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  transition: color 200ms ease-out;
+}
+
+a{
+  color: inherit;
+}
+
+
+h2, h3{
+  text-align: center;
+}
+
+
 .contenitore{
   display: flex;
   justify-content: center;
@@ -47,18 +65,18 @@ body{
   width: 100vw;
   height: 100vh;
 
-  z-index: 0;
+  z-index: -1;
 
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
   transition: color 200ms ease-out;
+
+  pointer-events: none;
+
 }
 
 #cerchio{
   position: fixed;
   width: 20vw;
-  z-index: 25;
+  z-index: 150;
   pointer-events:none;
 
   opacity: 0;
