@@ -7,14 +7,13 @@ window.addEventListener('resize', () => {
     cerchio.style.width = "20vw"
   }
 
-  if(bottonePremuto == NaN){
+  if(bottonePremuto == NaN || !bottonePremuto){
     return
   }
+
   let nomeBottone = bottonePremuto.classList.value
   nomeBottone = nomeBottone.replace("bottone ", "")
   sistemaTutto(nomeBottone)
-
-  console.log(nomeBottone)
 });
 
 
@@ -82,7 +81,7 @@ function apriMenu(nome) {
   cerchio.style.setProperty("animation", "rotazione 5s infinite linear")
 
   divTesto = document.querySelector(`.div-${nome}`)
-  divTesto.style.setProperty("color","rgba(255,0,0,255)")
+  divTesto.style.setProperty("color","#24273aFF")
 
   bottonePremuto.addEventListener("click", () => chiudiMenu(nome), {once: true})
 
@@ -94,7 +93,7 @@ function chiudiMenu(nome){
   bottonePremuto = document.querySelector(`.${nome}`) 
   cerchio.style.setProperty("opacity","0")
 
-  bottonePremuto.style.setProperty("transition","left 200ms ease-out, top 200ms ease-out")
+  bottonePremuto.style.setProperty("transition","border-radius 200ms ease-in-out, left 200ms ease-out, top 200ms ease-out")
 
   bottonePremuto.style.setProperty("left",`${0}px`)
   bottonePremuto.style.setProperty("top",`${0}px`)
@@ -190,7 +189,7 @@ function sistemaPosizioni(nome){
   cerchio.style.setProperty("animation", "rotazione 5s infinite linear")
 
   setTimeout(()=>{
-    bottonePremuto.style.setProperty("transition","")
+    bottonePremuto.style.setProperty("transition","border-radius 200ms ease-in-out")
     },200)
 }
 

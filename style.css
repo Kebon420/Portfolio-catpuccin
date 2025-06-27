@@ -101,7 +101,7 @@ li{
   z-index: -1;
   font-size: calc(2vw + 2rem);
   font-family: 'Futura Std';
-  color:#a6da95;
+  color:#cad3f5;
   text-align: center;
 }
 
@@ -131,7 +131,6 @@ li {
   transform: translate(0px,0px); 
 
   transition: 
-    transform 300ms ease-in-out, 
     border-radius 200ms ease-in-out;
 
 
