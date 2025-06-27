@@ -52,6 +52,8 @@ let divGradiente = document.querySelector(`.strato`)
 let coloreBottone;
 let gradiente;
 
+let divTesto; 
+
 function apriMenu(nome) {
 
   bottonePremuto = document.querySelector(`.${nome}`) 
@@ -77,6 +79,8 @@ function apriMenu(nome) {
 
   cerchio.style.setProperty("animation", "rotazione 5s infinite linear")
 
+  divTesto = document.querySelector(`.div-${nome}`)
+  divTesto.style.setProperty("color","rgba(255,0,0,255)")
 
   bottonePremuto.addEventListener("click", () => chiudiMenu(nome), {once: true})
 
@@ -84,8 +88,9 @@ function apriMenu(nome) {
 
 function chiudiMenu(nome){
 
+  divTesto.style.setProperty("color","rgba(0,0,0,0)")
   bottonePremuto = document.querySelector(`.${nome}`) 
-
+  cerchio.style.setProperty("opacity","0")
 
 
   bottonePremuto.style.setProperty("left",`${0}px`)
@@ -93,10 +98,6 @@ function chiudiMenu(nome){
 
   let divGradiente = document.querySelector(`.strato`) 
   divGradiente.style.setProperty("background-size","0% 0%")
-
-  document.querySelectorAll(".cerchino").forEach(frammentoCerchio => {
-    frammentoCerchio.style.setProperty("stroke","#00000000")
-  });
  
   rect = bottonePremuto.getBoundingClientRect();
   lunghezzaBottone = rect.right - rect.left
