@@ -140,16 +140,10 @@ li {
   
 
   max-height: 30vh;
-
   border-radius: 1rem;
-
-  transform: translate(0px,0px);
-  transition: 
-    transform 300ms ease-in-out, 
-    border-radius 200ms ease-in-out;
 }
 
-.bottone:hover{
+.a:hover, .b:hover, .c:hover, .d:hover{
   border-radius: 3rem;
   cursor: pointer;
 }
