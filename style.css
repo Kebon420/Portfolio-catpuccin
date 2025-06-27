@@ -59,6 +59,9 @@ body{
   width: 20vw;
   z-index: 25;
   pointer-events:none;
+
+  opacity: 0;
+  transition: opacity 200ms ease-in 
 }
 
 .cerchino{

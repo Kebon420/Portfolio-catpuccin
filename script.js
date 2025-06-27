@@ -60,6 +60,7 @@ function apriMenu(nome) {
 
   sistemaTutto(nome)
 
+  cerchio.style.setProperty("opacity","1")
   coloreCerchio = ottieniColoreCerchio(nome)
   
   bottoni.forEach(bottoneSingolo => {
@@ -82,6 +83,7 @@ function apriMenu(nome) {
 }
 
 function chiudiMenu(nome){
+
   bottonePremuto = document.querySelector(`.${nome}`) 
 
 
