@@ -24,12 +24,6 @@ bottoni.forEach(bottoneSingolo => {
   let nomeBottone = bottoneSingolo.classList.value
   nomeBottone = nomeBottone.replace("bottone ", "")
 
-  bottoneSingolo.style.setProperty("transition",`
-  top 200ms ease-in-out, 
-  left 200ms ease-in-out,
-  border-radius 200ms ease-in-out
-  `)
-
   bottoneSingolo.addEventListener("click", () => apriMenu(nomeBottone), {once: true})
 });
 

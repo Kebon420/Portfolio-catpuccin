@@ -124,6 +124,11 @@ li {
 }
 
 .bottone {
+  transition:
+    top 200ms ease-in-out, 
+    left 200ms ease-in-out,
+    border-radius 200ms ease-in-out;
+
   position: relative;
   display: flex;
   flex-direction: column;
