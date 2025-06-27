@@ -58,6 +58,8 @@ function apriMenu(nome) {
 
   bottonePremuto = document.querySelector(`.${nome}`) 
 
+  bottonePremuto.style.setProperty("transition","left 200ms ease-out, top 200ms ease-out")
+
   coloreBottone = getComputedStyle(bottonePremuto).getPropertyValue( "background-color" );
 
   sistemaTutto(nome)
@@ -92,6 +94,7 @@ function chiudiMenu(nome){
   bottonePremuto = document.querySelector(`.${nome}`) 
   cerchio.style.setProperty("opacity","0")
 
+  bottonePremuto.style.setProperty("transition","left 200ms ease-out, top 200ms ease-out")
 
   bottonePremuto.style.setProperty("left",`${0}px`)
   bottonePremuto.style.setProperty("top",`${0}px`)
@@ -140,6 +143,7 @@ function sistemaPosizioni(nome){
     return
   }
 
+
   cerchio.style.setProperty("animation", "none")
 
   cerc = cerchio.getBoundingClientRect();
@@ -184,6 +188,10 @@ function sistemaPosizioni(nome){
   bottonePremuto.style.setProperty("left",`${posX}px`)
   bottonePremuto.style.setProperty("top",`${posY}px`)
   cerchio.style.setProperty("animation", "rotazione 5s infinite linear")
+
+  setTimeout(()=>{
+    bottonePremuto.style.setProperty("transition","")
+    },200)
 }
 
 function sistemaStrato(){
