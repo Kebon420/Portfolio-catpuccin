@@ -1,11 +1,6 @@
 // import { Marquee } from "@/components/magicui/marquee"nome;
 window.addEventListener('resize', () => {
 
-  if(window.innerWidth < 700){
-    cerchio.style.width = "40vw"
-  }else{
-    cerchio.style.width = "20vw"
-  }
 
   if(bottonePremuto == NaN || !bottonePremuto){
     return
@@ -54,7 +49,12 @@ let gradiente;
 let divTesto; 
 
 function apriMenu(nome) {
+  aggiungiLink(nome)
 
+  document.querySelectorAll("p").forEach(element => {
+    element.style.setProperty("user-select","")
+    element.style.setProperty("moz-user-select","")
+  });
   bottonePremuto = document.querySelector(`.${nome}`) 
 
   bottonePremuto.style.setProperty("transition","left 200ms ease-out, top 200ms ease-out")
@@ -94,6 +94,8 @@ function apriMenu(nome) {
 
 function chiudiMenu(nome){
 
+  rimuoviLink(nome)
+
   divTesto.style.setProperty("z-index","9999")
   bottonePremuto.style.setProperty("background-color",`${coloreBottone}`)
   divTesto.style.setProperty("color","rgba(0,0,0,0)")
@@ -114,6 +116,12 @@ function chiudiMenu(nome){
 
   posizioneBottone = `${(lunghezzaBottone)/2 + rect.left}px ${(altezzaBottone)/2 + rect.top}px`
 
+  document.querySelectorAll("p").forEach(element => {
+    element.style.setProperty("user-select","none")
+    element.style.setProperty("moz-user-select","none")
+  });
+
+
   setTimeout(()=>{
     bottoni.forEach(bottoneSingolo => {
       bottoneSingolo.style.setProperty("z-index","1")
@@ -122,6 +130,7 @@ function chiudiMenu(nome){
     divTesto.style.setProperty("z-index","-1")
     bottonePremuto.addEventListener("click", () => apriMenu(nome), {once: true})
     bottonePremuto = NaN
+    clearSelection()
     },200)
 }
 
@@ -140,6 +149,14 @@ function ottieniColoreCerchio(nome){
 }
 
 function sistemaTutto(nome){
+  if(window.innerWidth < 700){
+    document.querySelector("p").style.setProperty("font-size","0.8rem")
+    cerchio.style.width = "min(40vw, 40vh)"
+  }else{
+    document.querySelector("p").style.setProperty("font-size","1rem")
+    cerchio.style.width = "min(20vw, 35vh)"
+  }
+
   document.querySelector("body").style.setProperty("background-size","100% 100%");
   sistemaPosizioni(nome)
   sistemaStrato()
@@ -207,4 +224,24 @@ function sistemaStrato(){
   divGradiente.style.setProperty("background-image",`${gradiente}`)
   divGradiente.style.setProperty("background-position",`0% 0%`)
   divGradiente.style.setProperty("background-size","2000% 2000%")
+}
+
+function clearSelection() {
+    if (window.getSelection) {
+        window.getSelection().removeAllRanges();
+    } else if (document.selection) {
+        document.selection.empty();
+    }
+}
+
+function aggiungiLink(nome){
+  if(nome=="a"){
+    document.getElementById("scuola").href = "https://belluzzifioravanti.edu.it/"
+  }
+}
+
+function rimuoviLink(nome){
+  if(nome=="a"){
+    document.getElementById("scuola").href = ""
+  }
 }
