@@ -193,13 +193,16 @@ li {
   width: 100%;
   background: white;
   border: 1px solid #ddd;
-  padding: 1rem 0;
+  opacity: 0;
+  transition: opacity 400ms;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .marquee {
   display: flex;
   width: fit-content;
-  animation: scroll 30s linear infinite;
+  animation: scroll 30s ease-in-out infinite;
   gap: 2rem;
 }
 
@@ -216,10 +219,14 @@ li {
 
 @keyframes scroll {
   0% {
-    transform: translateX(0%);
+    transform: translateX(5%);
+  }
+
+  50% {
+    transform: translateX(-55%);
   }
 
   100% {
-    transform: translateX(-50%);
+    transform: translateX(5%);
   }
 }

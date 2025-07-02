@@ -1,7 +1,5 @@
 // import { Marquee } from "@/components/magicui/marquee"nome;
 window.addEventListener('resize', () => {
-
-
   if(bottonePremuto == NaN || !bottonePremuto){
     return
   }
@@ -77,6 +75,9 @@ function apriMenu(nome) {
   });
 
 
+  if(nome == "b"){
+    document.querySelector(".marquee-wrapper").style.setProperty("opacity","1")
+  }
 
   cerchio.style.setProperty("animation", "rotazione 5s infinite linear")
 
@@ -122,6 +123,10 @@ function chiudiMenu(nome){
   });
 
 
+  if(nome == "b"){
+    document.querySelector(".marquee-wrapper").style.setProperty("opacity","0")
+  }
+
   setTimeout(()=>{
     bottoni.forEach(bottoneSingolo => {
       bottoneSingolo.style.setProperty("z-index","1")
@@ -156,6 +161,7 @@ function sistemaTutto(nome){
     document.querySelector("p").style.setProperty("font-size","1rem")
     cerchio.style.width = "min(20vw, 35vh)"
   }
+
 
   document.querySelector("body").style.setProperty("background-size","100% 100%");
   sistemaPosizioni(nome)
